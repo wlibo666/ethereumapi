@@ -51,7 +51,7 @@ func GetBlockByHash(rpcAddr string, blkHash common.Hash) (*types.Block, error) {
 	return cli.BlockByHash(context.Background(), blkHash)
 }
 
-func GetTranscationByHash(rpcAddr string, hash common.Hash) (tx *types.Transaction, isPending bool, err error) {
+func GetTranscationByHash(rpcAddr string, hash common.Hash) (*types.Transaction, bool, error) {
 	dial, err := rpc.Dial(rpcAddr)
 	if err != nil {
 		return nil, false, err
